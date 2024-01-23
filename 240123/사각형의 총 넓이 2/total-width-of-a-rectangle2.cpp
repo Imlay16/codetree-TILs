@@ -18,6 +18,11 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> x1 >> y1 >> x2 >> y2;
 
+        x1 += OFF_SET;
+        x2 += OFF_SET;
+        y1 += OFF_SET;
+        y2 += OFF_SET;
+
         for (int j = x1; j < x2; j++) {
             for (int k = y1; k < y2; k++) {
                 cord[j][k] = 1;
