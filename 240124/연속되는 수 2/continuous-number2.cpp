@@ -28,7 +28,7 @@ int main() {
             count++;
         }
 
-        if (!cnt) {
+        if (i == 0 || !cnt) {
             if (max < count) max = count;
         }
     }
