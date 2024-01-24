@@ -10,23 +10,28 @@ int main() {
     cin >> n >> t;
 
     int ans = 0;
-    int cnt;
+    int cnt = 0;
 
     for (int i = 0; i < n; i++) {
         cin >> number[i];
     }
 
     for (int i = 0; i < n; i++) {
-        if (i >= 1 && number[i] > t) {
+        if (number[i] > t) {
+
             cnt++;
+            ans = max(ans, cnt);
         }
         else {
             cnt = 1;
+            ans = max(ans, cnt);
+            cnt = 0;
         }
-        ans = max(ans, cnt);
+
+        
     }
 
-    cout << ans - 1;
+    cout << ans;
 
     return 0;
 }
