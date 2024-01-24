@@ -20,15 +20,14 @@ int main() {
         if (number[i] > t) {
 
             cnt++;
-            ans = max(ans, cnt);
+            
         }
         else {
-            cnt = 1;
-            ans = max(ans, cnt);
+            
             cnt = 0;
         }
 
-        
+        ans = max(ans, cnt);
     }
 
     cout << ans;
