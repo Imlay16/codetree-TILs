@@ -59,8 +59,8 @@ int main() {
 
     int point = -1;
 
-    for (int i = 1; i < MAX_N; i++) {
-        if (A[i] == B[i] && i < time) {
+    for (int i = 1; i < time; i++) {
+        if (A[i] == B[i]) {
             point = i;
             break;
         }
