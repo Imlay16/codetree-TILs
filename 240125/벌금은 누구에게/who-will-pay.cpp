@@ -17,10 +17,16 @@ int main() {
         cin >> num;
         student[num - 1]++;
 
-        for (int j = 0; j < MAX_N; j++) {
-            if (student[j] >= k) {
-                ans = j + 1;
-                break;
+        if (student[num - 1] == k) {
+            ans = num;
+            break;
+        }
+        else {
+            for (int j = 0; j < MAX_N; j++) {
+                if (student[j] >= k) {
+                    ans = j + 1;
+                    break;
+                }
             }
         }
     }
