@@ -16,7 +16,7 @@ int main() {
     char direction;
 
     int start = 0;
-    int time = 0;
+    int time = 1;
 
     for (int i = 0; i < n; i++) {
         cin >> direction >> distance;
@@ -38,7 +38,7 @@ int main() {
     }
 
     start = 0;
-    time = 0;
+    time = 1;
     for (int i = 0; i < m; i++) {
         cin >> direction >> distance;
 
@@ -59,8 +59,8 @@ int main() {
 
     int point = -1;
 
-    for (int i = 0; i < MAX_N; i++) {
-        if (A[i] == B[i] && i < time) {
+    for (int i = 1; i < MAX_N; i++) {
+        if (A[i] == B[i] && i <= time) {
             point = i;
             break;
         }
