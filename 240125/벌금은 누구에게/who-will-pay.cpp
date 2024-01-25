@@ -19,13 +19,13 @@ int main() {
 
         for (int j = 0; j < MAX_N; j++) {
             if (student[j] >= k) {
-                ans = j;
+                ans = j + 1;
                 break;
             }
         }
     }
 
-    cout << ans + 1;
+    cout << ans;
     
 
 
