@@ -29,7 +29,7 @@ int main() {
             }
         } 
         else {
-            for (int j = start; j < distance; j++) {
+            for (int j = 0; j < distance; j++) {
                 start++;
                 A[time++] = start;
                 
@@ -43,25 +43,31 @@ int main() {
         cin >> direction >> distance;
 
         if (direction == 'L') {
-            start--;
-            B[time++] = start;
+            for (int j = 0; j < distance; j++) {
+                start--;
+                B[time++] = start;
+            }
+            
         }
         else {
-            start++;
-            B[time++] = start;
+            for (int j = 0; j < distance; j++) {
+                start++;
+                B[time++] = start;
+            }
         }
     }
 
     int point = -1;
 
     for (int i = 0; i < MAX_N; i++) {
-        if (A[i] == B[i]) {
+        if (A[i] == B[i] && i < time) {
             point = i;
             break;
         }
     }
     
-    cout << point;
+    cout << point << endl;
+  
     // 여기에 코드를 작성해주세요.
     return 0;
 }
