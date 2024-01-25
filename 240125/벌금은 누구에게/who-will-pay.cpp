@@ -12,23 +12,23 @@ int main() {
     int num;
 
     int ans = -1;
+    int end_flag = 0;
 
     for (int i = 0; i < m; i++) {
         cin >> num;
         student[num - 1]++;
-
-        if (student[num - 1] == k) {
-            ans = num;
-            break;
-        }
-        else {
-            for (int j = 0; j < MAX_N; j++) {
-                if (student[j] >= k) {
-                    ans = j + 1;
-                    break;
-                }
+        
+        for (int j = 0; j < MAX_N; j++) {
+            if (student[j] >= k) {
+                ans = j + 1;
+                end_flag = 1;
+                break;
             }
         }
+        if (end_flag) {
+            break;
+        }
+        
     }
 
     cout << ans;
