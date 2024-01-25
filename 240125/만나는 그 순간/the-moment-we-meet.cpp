@@ -60,7 +60,7 @@ int main() {
     int point = -1;
 
     for (int i = 1; i < MAX_N; i++) {
-        if (A[i] == B[i] && i <= time) {
+        if (A[i] == B[i] && i < time) {
             point = i;
             break;
         }
