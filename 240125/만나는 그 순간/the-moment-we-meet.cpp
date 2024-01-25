@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#define MAX_N 100000
+#define MAX_N 1000000
 
 int A[MAX_N];
 int B[MAX_N];
