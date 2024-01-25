@@ -1,8 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#define MAX_N 1000
-#define OFF_SET 1000
+#define MAX_N 100000
 
 int A[MAX_N];
 int B[MAX_N];
