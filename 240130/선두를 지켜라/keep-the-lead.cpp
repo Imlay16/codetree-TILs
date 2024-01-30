@@ -43,7 +43,7 @@ int main() {
     int cnt = 0;
     int flag;
     int signal;
-    if (A[1] >= B[1]) flag = 1;
+    if (A[1] > B[1]) flag = 1;
     else flag = 2;
     
     for (int i = 2; i < MAX_N + 1; i++) {
