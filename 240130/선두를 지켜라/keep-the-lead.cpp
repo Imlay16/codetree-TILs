@@ -57,6 +57,6 @@ int main() {
         } 
     }
     
-    cout << cnt - 1;
+    cout << cnt;
     return 0;
 }
