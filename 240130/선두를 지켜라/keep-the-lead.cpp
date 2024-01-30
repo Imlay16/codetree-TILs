@@ -48,13 +48,14 @@ int main() {
     
     for (int i = 2; i < MAX_N + 1; i++) {
 
-        if (A[i] >= B[i]) signal = 1;
+        if (A[i] > B[i]) signal = 1;
         else signal = 2;
 
         if (flag != signal) {
             cnt++;
             flag = signal;
-        } 
+        }
+        
     }
     
     cout << cnt;
