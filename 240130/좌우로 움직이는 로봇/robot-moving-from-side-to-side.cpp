@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 using namespace std;
 
 #define MAX_N 1000000
@@ -38,6 +39,7 @@ int main() {
             }
         }
     }
+    int start_a = start;
 
     start = 0;
     index = 1;
@@ -59,21 +61,36 @@ int main() {
             }
         }
     }
-   
+    int start_b = start;
+
     int cnt = 0;
 
-    if (time_a >= time_b) time = time_a;
-    else time = time_b;
+    if (time_a >= time_b) {
+        time = time_a;
+        
+        for (int i = time_b; i < time_a; i++) {
+            b[i] = start_b;
+        }
+        
+    }
+    else {
+        time = time_b;
 
+        for (int i = time_a; i < time_b; i++) {
+            a[i] = start_a;
+        }
+    }
+    
+
+    
     for (int i = 1; i < time; i++) {
 
         if (a[i] == b[i] && a[i - 1] != b[i - 1]) {
-            cout << i << endl;
             cnt++;
         }
-
     }
 
+    
     cout << cnt;
 
     return 0;
