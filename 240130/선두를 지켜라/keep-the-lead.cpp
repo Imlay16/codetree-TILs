@@ -44,12 +44,12 @@ int main() {
     int flag;
     int signal;
     if (A[1] > B[1]) flag = 1;
-    else flag = 2;
+    else if (A[1] < B[1]) flag = 2;
     
     for (int i = 2; i < MAX_N + 1; i++) {
 
         if (A[i] > B[i]) signal = 1;
-        else signal = 2;
+        else if (A[i] < B[i]) signal = 2;
 
         if (flag != signal) {
             cnt++;
