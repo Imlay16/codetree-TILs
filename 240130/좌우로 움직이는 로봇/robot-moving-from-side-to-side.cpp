@@ -18,9 +18,12 @@ int main() {
     int start = 0;
     int distance = 0;
     int index = 1;
+    int time_a = 0;
+    int time_b = 0;
 
     for (int i = 0; i < n; i++) {
         cin >> time >> dir;
+        time_a += time;
 
         if (dir == 'L') {
             for (int j = 0; j < time; j++) {
@@ -41,6 +44,7 @@ int main() {
 
     for (int i = 0; i < m; i++) {
         cin >> time >> dir;
+        time_b += time;
 
         if (dir == 'L') {
             for (int j = 0; j < time; j++) {
@@ -55,12 +59,18 @@ int main() {
             }
         }
     }
-
+   
     int cnt = 0;
 
-    for (int i = 1; i < MAX_N; i++) {
+    if (time_a >= time_b) time = time_a;
+    else time = time_b;
 
-        if (a[i] == b[i] && a[i - 1] != b[i - 1]) cnt++;
+    for (int i = 1; i < time; i++) {
+
+        if (a[i] == b[i] && a[i - 1] != b[i - 1]) {
+            cout << i << endl;
+            cnt++;
+        }
 
     }
 
