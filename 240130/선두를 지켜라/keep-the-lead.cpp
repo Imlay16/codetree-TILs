@@ -4,7 +4,7 @@ using namespace std;
 #define MAX_N 1000000
 int A[MAX_N + 1];
 int B[MAX_N + 1];
-int flag[MAX_N + 1];
+// int flag[MAX_N + 1];
 
 
 int main() {
@@ -18,6 +18,7 @@ int main() {
     int time;
     int index = 1;
     int start = 0;
+    int time_a = 0;
 
     for (int i = 0; i < n; i++) {
         cin >> vel >> time;
@@ -25,6 +26,7 @@ int main() {
         for (int j = 0; j < time; j++) {
             A[index++] = start + vel;
             start += vel;
+            time_a++;
         }
     }
 
@@ -41,19 +43,22 @@ int main() {
     }
 
     int cnt = 0;
-    int flag;
-    int signal;
-    if (A[1] > B[1]) flag = 1;
-    else if (A[1] < B[1]) flag = 2;
+    int flag = 0;
+   
     
-    for (int i = 2; i < MAX_N + 1; i++) {
+    for (int i = 1; i < time_a; i++) {
 
-        if (A[i] > B[i]) signal = 1;
-        else if (A[i] < B[i]) signal = 2;
+        if (A[i] > B[i]) {
 
-        if (flag != signal) {
-            cnt++;
-            flag = signal;
+            if (flag == 2) cnt++;
+
+            flag = 1;
+        }
+        else if (A[i] < B[i]) {
+
+            if (flag == 1) cnt++;
+
+            flag = 2;
         }
         
     }
