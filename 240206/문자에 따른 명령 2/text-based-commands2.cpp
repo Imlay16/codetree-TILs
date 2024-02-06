@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 
@@ -9,25 +10,24 @@ int main() {
     int dx[4] = {1, 0, -1, 0}, dy[4] = {0, -1, 0, 1};
 
     int dir = 3;
-    char direction;
-    char move;
+    string direction;
 
-   
-    cin >> direction >> move;
+    cin >> direction;
 
-    if (direction == 'L') {
-        dir = (dir + 3) % 4;
+    for (int i = 0; i < (int)direction.size(); i++) {
+        char c_dir = direction[i];
+
+        if (c_dir == 'L') {
+            dir = (dir + 3) % 4;
+        }
+        else if (c_dir == 'R') {
+            dir = (dir + 1) % 4;
+        }
+        else {
+            x += dx[dir];
+            y += dy[dir];
+        }
     }
-    else if (direction == 'R') {
-        dir = (dir + 1) % 4;
-    }
-
-    if (move == 'F') {
-        x += dx[dir];
-        y += dy[dir];
-    }
-
-
     cout << x << " " << y;
     
     // 여기에 코드를 작성해주세요.
