@@ -10,10 +10,10 @@ int getDir(char a_dir) {
     else if (a_dir == 'D') {
         return 1;
     }
-    else if (a_dir == 'L') {
+    else if (a_dir == 'U') {
         return 2;
     }
-    else if (a_dir == 'U') {
+    else if (a_dir == 'L') {
         return 3;
     }
 }
@@ -26,29 +26,27 @@ int main() {
    
     int t;
     char dir;
-    int x, y;
+    int r, c;
 
     cin >> n >> t;
-    cin >> x >> y >> dir;
-    x--;
-    y--;
+    cin >> r >> c >> dir;
+    r--; c--;
 
     int dx[4] = {0, 1, -1, 0}, dy[4] = {1, 0, 0, -1};
     
     int get_dir = getDir(dir);
 
-    for (int i = 0; i < t; i++) {
-
-        if (!isRange(x, y)) {
-            i++;
+    while (t--) {
+        int nx = r + dx[get_dir], ny = c + dy[get_dir];
+        if (isRange(nx, ny)) {
+            r = nx, c = ny;
+        }
+        else {
             get_dir = 3 - get_dir;
         }
-
-        x = x + dx[get_dir];
-        y = y + dy[get_dir];
     }
 
-    cout << x + 1 << " " << y + 1;
+    cout << r + 1 << " " << c + 1;
     
     return 0;
 }
