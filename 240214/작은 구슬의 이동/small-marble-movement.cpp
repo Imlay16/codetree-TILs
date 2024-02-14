@@ -30,6 +30,8 @@ int main() {
 
     cin >> n >> t;
     cin >> x >> y >> dir;
+    x--;
+    y--;
 
     int dx[4] = {0, 1, -1, 0}, dy[4] = {1, 0, 0, -1};
     
@@ -37,18 +39,16 @@ int main() {
 
     for (int i = 0; i < t; i++) {
 
-        x = x + dx[get_dir];
-        y = y + dy[get_dir];
-
         if (!isRange(x, y)) {
             i++;
             get_dir = 3 - get_dir;
         }
 
-
+        x = x + dx[get_dir];
+        y = y + dy[get_dir];
     }
 
-    cout << x + 1<< " " << y + 1;
+    cout << x + 1 << " " << y + 1;
     
     return 0;
 }
