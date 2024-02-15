@@ -41,7 +41,7 @@ int main() {
         for (int j = 0; j < dist[i]; j++) {
             int nx = x + dx[getDir(a_dir)], ny = y + dy[getDir(a_dir)];
 
-            cout << nx << " " << ny << endl;
+            //out << nx << " " << ny << endl;
             
             if (i != 0 && nx == 0 && ny == 0) {
                 flag = 1;
