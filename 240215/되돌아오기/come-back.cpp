@@ -1,10 +1,8 @@
 #include <iostream>
 using namespace std;
 
-#define MAX_N 100
-
-int dist[MAX_N];
-char dir[MAX_N];
+int dx[4] = {0, 1, 0, -1}, dy[4] = {1, 0, -1, 0};
+int n, x, y;
 
 int getDir(char a_dir) {
     switch(a_dir) {
@@ -18,44 +16,40 @@ int getDir(char a_dir) {
             return 3;
     }
 }
+int elapsed_time;
+int ans = -1;
+
+bool Move(int dir, int dist) {
+    while (dist--) {
+        x += dx[dir];
+        y += dy[dir];
+
+        elapsed_time++;
+
+        if (x == 0 && y == 0) {
+            ans = elapsed_time;
+            return true;
+        }
+    }
+    return false;
+}
 
 int main() {
     
-    int n;
+    
     cin >> n;
+    
+    while (n--) {
+        char c_dir; int dist;
+        cin >> c_dir >> dist;
 
-    int x = 0, y = 0;
-    int flag = 0;
+        int dir = getDir(c_dir);
 
-    int cnt = 1;
-    int dx[4] = {0, 1, 0, -1}, dy[4] = {1, 0, -1, 0};
+        bool done = Move(dir, dist);
 
-    for (int i = 0; i < n; i++) {
-        cin >> dir[i] >> dist[i];
+        if (done) break;
     }
 
-    for (int i = 0; i < n; i++) {
-
-        char a_dir = dir[i];
-
-        for (int j = 0; j < dist[i]; j++) {
-            int nx = x + dx[getDir(a_dir)], ny = y + dy[getDir(a_dir)];
-
-            //out << nx << " " << ny << endl;
-            
-            if (i != 0 && nx == 0 && ny == 0) {
-                flag = 1;
-                break;
-            }
-
-            x = nx, y = ny;
-            cnt++;
-        }        
-        if (flag == 1) break;
-    }
-
-    if (flag == 0) cout << -1;
-    else cout << cnt;
-
+    cout << ans;
     return 0;
 }
