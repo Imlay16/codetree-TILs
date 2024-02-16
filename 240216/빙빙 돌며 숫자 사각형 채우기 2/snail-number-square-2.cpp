@@ -1,13 +1,13 @@
 #include <iostream>
+#include <string.h>
 using namespace std;
-#define MAX_N 100
+
 int n, m;
 
 bool InRange(int x, int y) {
     return (0 <= x && x < n && 0 <= y && y < n);
 }
 
-int grid[MAX_N][MAX_N];
 
 int main() {
 
@@ -15,6 +15,9 @@ int main() {
 
     int x = 0, y = 0;
     int dir_num = 0;
+
+    int grid[n][m];
+    memset(grid, 0, n*m*4);
 
     int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1};
 
@@ -25,14 +28,12 @@ int main() {
         
         int nx = x + dx[dir_num], ny = y + dy[dir_num];
 
-        if (InRange(nx, ny) && grid[nx][ny] == 0) {
-            grid[nx][ny] = cnt++;
-        }
-        else {
+        if (!InRange(nx, ny) || grid[nx][ny] != 0) {
             dir_num = (dir_num + 1) % 4;
-            nx = x + dx[dir_num], ny = y + dy[dir_num];
-            grid[nx][ny] = cnt++;
         }
+        
+        nx = x + dx[dir_num], ny = y + dy[dir_num];
+        grid[nx][ny] = cnt++;
         x = nx, y = ny;
     }    
 
