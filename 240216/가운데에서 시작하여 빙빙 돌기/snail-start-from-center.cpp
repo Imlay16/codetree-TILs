@@ -14,13 +14,13 @@ int main() {
     int grid[n][n];
     memset(grid, 0, n*n*4);
 
-    int x = n/2, y = n/2;
+    int x = n - 1, y = n - 1;
     int dir_num = 0;
 
-    int dx[4] = {0, 1, 0 , -1}, dy[4] = {1, 0, -1, 0};
+    int dx[4] = {0, -1, 0 , 1}, dy[4] = {-1, 0, 1, 0};
 
-    int cnt = 1;
-    grid[x][y] = cnt++;
+    int cnt = n*n;
+    grid[x][y] = cnt--;
 
     for (int i = 1; i < n*n; i++) {
 
@@ -31,11 +31,11 @@ int main() {
             x = nx, y = ny;
         }
         else {
-            dir_num = (dir_num + 3) % 4;
+            dir_num = (dir_num + 1) % 4;
             x = x + dx[dir_num], y = y + dy[dir_num];
             grid[x][y] = cnt;
         }
-        cnt++;
+        cnt--;
     }
 
     for (int i = 0; i < n; i++) {
