@@ -19,21 +19,21 @@ int main() {
     int dir_num = 0;
     int dx[4] = {0, 1, 0, -1}, dy[4] = {1, 0, -1, 0};
 
-    char cnt = 65;
-    grid[x][y] = cnt++;
+    int cnt = 1;
+    grid[x][y] = 65;
 
     for (int i = 1; i < n*m; i++) {
 
         int nx = x + dx[dir_num], ny = y + dy[dir_num];
 
         if (InRange(nx, ny) && grid[nx][ny] == 0) {
-            x = x + dx[dir_num], y = y + dy[dir_num];
-            grid[x][y] = cnt;
+            x = nx, y = ny;
+            grid[x][y] = (cnt % 26) + 65;
         }
         else {
             dir_num = (dir_num + 1) % 4;
             x = x + dx[dir_num], y = y + dy[dir_num];
-            grid[x][y] = cnt;
+            grid[x][y] = (cnt % 26) + 65;
         }
         cnt++;
     }
