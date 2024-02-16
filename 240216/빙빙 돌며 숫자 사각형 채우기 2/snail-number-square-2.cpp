@@ -27,12 +27,13 @@ int main() {
 
         if (InRange(nx, ny) && grid[nx][ny] == 0) {
             grid[nx][ny] = cnt++;
-            x = nx, y = ny;
         }
         else {
             dir_num = (dir_num + 1) % 4;
-            i--;
+            nx = x + dx[dir_num], ny = y + dy[dir_num];
+            grid[nx][ny] = cnt++;
         }
+        x = nx, y = ny;
     }    
 
     for (int i = 0; i < n; i++) {
