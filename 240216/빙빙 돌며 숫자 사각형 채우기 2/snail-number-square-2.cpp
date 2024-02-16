@@ -5,7 +5,7 @@ using namespace std;
 int n, m;
 
 bool InRange(int x, int y) {
-    return (0 <= x && x < n && 0 <= y && y < n);
+    return (0 <= x && x < n && 0 <= y && y < m);
 }
 
 
@@ -24,18 +24,21 @@ int main() {
     grid[x][y] = 1;
     int cnt = 2;
 
-    for (int i = 1; i < n * m; i++) {
-        
+    for (int i = 1; i < n*m; i++) {
+
         int nx = x + dx[dir_num], ny = y + dy[dir_num];
 
-        if (!InRange(nx, ny) || grid[nx][ny] != 0) {
-            dir_num = (dir_num + 1) % 4;
+        if (InRange(nx, ny) && grid[nx][ny] == 0) {
+            x = x + dx[dir_num], y = y + dy[dir_num];
+            grid[x][y] = cnt;
         }
-        
-        nx = x + dx[dir_num], ny = y + dy[dir_num];
-        grid[nx][ny] = cnt++;
-        x = nx, y = ny;
-    }    
+        else {
+            dir_num = (dir_num + 1) % 4;
+            x = x + dx[dir_num], y = y + dy[dir_num];
+            grid[x][y] = cnt;
+        }
+        cnt++;
+    }
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
