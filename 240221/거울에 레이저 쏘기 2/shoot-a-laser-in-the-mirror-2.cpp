@@ -55,7 +55,7 @@ int main() {
     // 이제 거울에 튕기는 알고리즘 짜기
     int cnt = 0;
 
-    while (true) {
+    while (InRange(x, y)) {
         char direction = grid[x][y];
 
         if (direction == '/') {
@@ -90,15 +90,8 @@ int main() {
         }   
 
         int nx = x + dx[dir_num], ny = y + dy[dir_num];
-
         cnt++;
-        
-        if (!InRange(nx, ny)) {
-            break;
-        }
-        
         x = nx, y = ny;
-        
     }
 
     cout << cnt;
