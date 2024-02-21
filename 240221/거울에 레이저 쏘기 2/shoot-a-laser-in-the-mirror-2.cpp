@@ -46,7 +46,7 @@ int main() {
             dir_num = 3;
             break;
         case 3:
-            x = n - 1;
+            x = (n - 1) - (k % n);
             y = 0;
             dir_num = 0;
             break;
