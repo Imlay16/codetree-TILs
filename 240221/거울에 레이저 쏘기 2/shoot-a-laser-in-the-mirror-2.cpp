@@ -25,7 +25,6 @@ int main() {
 
     int dx[4] = {0, 1, 0, -1}, dy[4] = {1, 0, -1, 0};
 
-    k--;
     int x, y;
     int dir_num;
 
@@ -42,7 +41,7 @@ int main() {
             break;
         case 2:
             x = n - 1;
-            y = n - (k % n);
+            y = n - (k % n) - 1;
             dir_num = 3;
             break;
         case 3:
@@ -51,7 +50,7 @@ int main() {
             dir_num = 0;
             break;
     }
-    
+
     // 이제 거울에 튕기는 알고리즘 짜기
     int cnt = 0;
 
@@ -85,13 +84,12 @@ int main() {
                 dir_num = 3;
             }
             else if (dir_num == 3) {
-                dir_num == 2;
+                dir_num = 2;
             }
-        }   
+        } 
 
-        int nx = x + dx[dir_num], ny = y + dy[dir_num];
+        x = x + dx[dir_num], y = y + dy[dir_num];
         cnt++;
-        x = nx, y = ny;
     }
 
     cout << cnt;
