@@ -27,6 +27,7 @@ int main() {
 
     int x, y;
     int dir_num;
+    k--;
 
     switch(k / n) {
         case 0:
