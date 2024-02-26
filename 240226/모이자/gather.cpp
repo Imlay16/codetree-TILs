@@ -1,5 +1,6 @@
 #include <iostream>
 #include <climits>
+#include <algorithm>
 using namespace std;
 
 #define MAX_N 100
@@ -23,18 +24,10 @@ int main() {
     for (int i = 0; i < n; i++) {
         total_distance = 0;
 
-        dist = 0;
-        for (int j = i; j < n; j++) {
-            total_distance += people[j] * dist;
-            dist++;
+        for (int j = 0; j < n; j++) {
+            total_distance += abs(j - i) * people[j];
         }
-
-        dist = 0;
-        for (int j = i; j >= 0; j--) { 
-            total_distance += people[j] * dist;
-            dist++;
-        }
-
+        
         if (min > total_distance) {
             min = total_distance;
         }
