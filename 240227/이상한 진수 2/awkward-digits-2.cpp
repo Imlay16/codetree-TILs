@@ -41,12 +41,17 @@ int main() {
         else cout << 0;
     }
     else {
-        if (num.find('0')) {
+
+        if (!(num.find('0') != string::npos)) {
             num[len - 1] = '0';
             flag = 1;
+            int number = changeNum(num, flag);
+            cout << number;
         }
-        int number = changeNum(num, flag);
-        cout << number;
+        else {
+            int number = changeNum(num, flag);
+            cout << number;
+        }
     }
 
     return 0;
