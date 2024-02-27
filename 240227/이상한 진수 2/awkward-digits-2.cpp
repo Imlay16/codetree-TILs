@@ -13,16 +13,18 @@ int main() {
 
     int ans = INT_MIN;
 
-        for (int i = 0; i < num.length(); i++) {
+    for (int i = 0; i < num.length(); i++) {
 
         num[i] = '0' + '1' - num[i];
 
 
         int number = 0;
+        int digit = 1;
 
-        for (int j = 0; j < num.length(); j++) {
-            number = number * 2 + (num[j] - '0');
-        } 
+        for (int i = num.length() - 1; i >= 0; i--) {
+            number = number + (num[i] - '0') * digit;
+            digit *= 2;
+        }
 
         ans = max(ans, number);
 
