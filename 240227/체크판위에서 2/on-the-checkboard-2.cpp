@@ -1,77 +1,37 @@
 #include <iostream>
-#include <algorithm>
-
+#define MAX_N 15
 using namespace std;
 
-#define MAX_R 15
-#define MAX_C 15
-
-int R, C;
-
-char grid[MAX_R][MAX_C];
+char grid[MAX_N][MAX_N];
 
 int main() {
-   
-   cin >> R >> C;
 
-   char spot;
+    int n, m;
+    cin >> n >> m;
 
-   for (int i = 0; i < R; i++) {
-        for (int j = 0; j < C; j++) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
             cin >> grid[i][j];
         }
     }
 
     int cnt = 0;
-    int ans = 0;
 
-    int r_pos, c_pos;
+    for (int i = 1; i < n; i++) {
+        for (int j = 1; j < m; j++) {
+            for (int k = i + 1; k < n - 1; k++) {
+                for (int l = j + 1; l < m - 1; l++) {
 
-    char prev;
-    int flag = 1;
 
-    for (int r = 0; r < R; r++) {
-        for (int c = 0; c < C; c++) {
-            r_pos = i;
-            c_pos = j;
-
-            cnt = 0;
-
-            for (int i = 0; i < R; i++) {
-                for (int j = 0; j < C; j++) {
-                    if (grid[i][j] == grid[r_pos][c_pos]) {
-
-                        prev = 'W';
-                    }   
-                    else {
-
-                        prev = 'B';
-                    }
-
-                    for (int k = i + 1; k < R; k++) {
-                        for (int l = j + 1; l < C; l++) {
-
-                            if (grid[k][l] != prev) {
-
-                                r_pos = k;
-                                c_pos = l;
-
-                                i = k + 1;
-                                j = l + 1;
-                                cnt++;
-
-                                flag = 2;
-                                break;
-                            }
-                        }
-                        if (flag == 2) break;
-                    }
+                    if (grid[0][0] != grid[i][j] 
+                    && grid[i][j] != grid[k][l] 
+                    && grid[k][l] != grid[n - 1][m - 1]) cnt++;
                 }
             }
-            if (cnt == 2) ans++;
         }
     }
-    
-    cout << ans;
+
+    cout << cnt;
+
     return 0;
 }
