@@ -2,57 +2,34 @@
 #include <algorithm>
 #include <cstring>
 #include <string>
+#include <climits>
 
 using namespace std;
-
-int changeNum(string num, int flag) {
-    for (int i = 0; i < num.length() - flag; i++) {
-        if (num[i] == '0') {
-            num[i] = '1';
-            break;
-        }
-    }
-
-    int len = num.length();
-
-    int total = 0;
-    int change = 1;
-
-    for (int i = len - 1; i >= 0; i--) {
-        if (num[i] == '1') {
-            total += change;
-        }
-        change *= 2;
-    }
-    return total;
-}
 
 int main() {
 
     string num;
     cin >> num;
 
-    int flag = 0;
+    int ans = INT_MIN;
 
-    int len = num.length();
+        for (int i = 0; i < num.length(); i++) {
 
-    if (len == 1) {
-        if (num[0] == '0') cout << 1;
-        else cout << 0;
+        num[i] = '0' + '1' - num[i];
+
+
+        int number = 0;
+
+        for (int j = 0; j < num.length(); j++) {
+            number = number * 2 + (num[j] - '0');
+        } 
+
+        ans = max(ans, number);
+
+        num[i] = '0' + '1' - num[i];
     }
-    else {
 
-        if (!(num.find('0') != string::npos)) {
-            num[len - 1] = '0';
-            flag = 1;
-            int number = changeNum(num, flag);
-            cout << number;
-        }
-        else {
-            int number = changeNum(num, flag);
-            cout << number;
-        }
-    }
+    cout << ans;
 
     return 0;
 }
