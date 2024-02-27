@@ -24,37 +24,51 @@ int main() {
 
     int cnt = 0;
     int ans = 0;
-    // 점프 기능 구현
 
-    for (int i = 0; i < R; i++) {
-        cnt = 0;
-        for (int j = 0; j < C; j++) {
-            for (int k = i + 1; k < R; k++) {
-                for (int l = j + 1; l < C; l++) {
+    int r_pos, c_pos;
 
-                    if (grid[i][j] == 'W') {
+    char prev;
+    int flag = 1;
 
-                        if (grid[k][l] == 'B') {
-                            if (k + 1 < R && j + 1 < C) {
-                                i = k + 1;
-                                l = j + 1;
-                                cnt++;
-                            }
-                        }
-                    }
+    for (int r = 0; r < R; r++) {
+        for (int c = 0; c < C; c++) {
+            r_pos = i;
+            c_pos = j;
+
+            cnt = 0;
+
+            for (int i = 0; i < R; i++) {
+                for (int j = 0; j < C; j++) {
+                    if (grid[i][j] == grid[r_pos][c_pos]) {
+
+                        prev = 'W';
+                    }   
                     else {
-                        
-                        if (grid[k][l] == 'W') {
-                            if (k +1 < R && j + 1 < C) {
+
+                        prev = 'B';
+                    }
+
+                    for (int k = i + 1; k < R; k++) {
+                        for (int l = j + 1; l < C; l++) {
+
+                            if (grid[k][l] != prev) {
+
+                                r_pos = k;
+                                c_pos = l;
+
                                 i = k + 1;
-                                l = j + 1;
+                                j = l + 1;
                                 cnt++;
+
+                                flag = 2;
+                                break;
                             }
                         }
+                        if (flag == 2) break;
                     }
                 }
-                if (cnt == 2) ans++;
             }
+            if (cnt == 2) ans++;
         }
     }
     
