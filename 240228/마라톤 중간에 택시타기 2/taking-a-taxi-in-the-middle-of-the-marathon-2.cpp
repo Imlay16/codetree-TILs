@@ -41,6 +41,6 @@ int main() {
         total += dis[i];
     }
 
-    cout << min + 1;
+    cout << min;
     return 0;
 }
