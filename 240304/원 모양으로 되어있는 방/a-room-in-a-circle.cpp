@@ -30,7 +30,7 @@ int main() {
             distance++;
         }
 
-        for (int k = i - 1; k >= 0; k--) {
+        for (int k = 0; k < i; k++) {
             total += people[k] * distance;
 
             distance++;
