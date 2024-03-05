@@ -26,14 +26,13 @@ int main() {
 
         for (int j = 0; j < n; j++) {
 
-            if ((j != 0 && j == prev_index) || j == next_index) continue;
+            if ((i != 0 && j == prev_index) || j == next_index || j == i) continue;
 
             total += num[j];
 
             if (max < total) max = total;
-            total = num[i];
+            total -= num[j];
         }
-
     }
 
     cout << max;
