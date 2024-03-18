@@ -5,29 +5,7 @@
 using namespace std;
 
 #define MAX_N 20
-int num[MAX_N];
-
-int carry(int num1, int num2) {
-
-    int flag = 1;
-    
-    int max_num = max(num1, num2);
-    int min_num = min(num1, num2);
-
-    string max_str = to_string(max_num);
-    string min_str = to_string(min_num);
-
-    int diff = max_str.length() - min_str.length();
-
-    int len = min_str.length();
-    for (int i = 0; i < len; i++) {
-        if (max_str[len - i - 1 + diff] - '0' + min_str[len - i - 1] - '0' >= 10) {
-            flag = 0;
-            return flag;
-        }
-    }
-    return flag;
-}
+int arr[MAX_N];
 
 int main() {
     // 여기에 코드를 작성해주세요.
@@ -35,51 +13,44 @@ int main() {
     cin >> n;
 
     for (int i = 0; i < n; i++) {
-        cin >> num[i];
+        cin >> arr[i];
     }
 
-    int max = INT_MIN;
+    int max = -1;
 
-    int flag = 1;
-    int total = 0;
     for (int i = 0; i < n; i++) {
-        total = num[i];
         for (int j = i + 1; j < n; j++) {
-            flag = carry(total, num[j]);
-
-            if (flag) {
-                total += num[j];
-            }
-            else {
-                break;
-            }
             for (int k = j + 1; k < n; k++) {
-                int nums = total;
 
-                flag = carry(total, num[k]);
+                bool carry = false;
 
-                if (flag) {
-                    nums += num[k];
-                }
-                else {
-                    break;
+                if (arr[i] % 10 + arr[j] % 10 + arr[k] % 10 >= 10) {
+                    carry = true;
                 }
 
-                if (max < nums) {
-                    max = nums;
+                if (arr[i] % 100 / 10 + arr[j] % 100 / 10 + arr[k] % 100 / 10>= 10) {
+                    carry = true;
+                }
+
+                if (arr[i] % 1000 / 100 + arr[j] % 1000 / 100 + arr[k] % 1000 / 100 >= 10) {
+                    carry = true;
+                }
+
+                if (arr[i] % 10000 / 1000 + arr[j] % 10000 / 1000 + arr[k] % 10000 / 1000 >= 10) {
+                    carry = true;
+                }
+
+                if (carry == false) {
+                    int total = arr[i] + arr[j] + arr[k];
+                    if (max < total) {
+                        max = total;
+                    }
                 }
             }
-            if (flag == 0) break;
         }
-        if (flag == 0) break;
     }
     
-    if (flag) {
-        cout << max;
-    }
-    else {
-        cout << -1;
-    }
+    cout << max;
 
     return 0;
 }
