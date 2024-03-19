@@ -159,8 +159,14 @@ int main() {
         if (flag) break;
     }
 
-    cout << ans << endl;
-    cout << row + 1 << " " << col + 1;
+    if (flag) {
+        cout << ans << endl;
+        cout << row + 1 << " " << col + 1;
+    }
+    else {
+        cout << 0;
+    }
+
     
     return 0;
 }
